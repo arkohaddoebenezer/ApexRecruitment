@@ -61,7 +61,8 @@
             <h4 class="font-20 weight-500 mb-10 text-capitalize">
                 Welcome to Apex Recruitment Portal <div class="weight-600 font-30 text-blue">Applicant!</div>
             </h4>
-            <p class="font-18 max-width-600">Create an account below to begin your application process or login to continue
+            <p class="font-18 max-width-600">Create an account below to begin your application process or login to
+                continue
                 your application process.</p>
         </div>
     </div>
@@ -72,21 +73,22 @@
                     <img src="vendors/images/register-page-img.png" alt="">
                 </div>
                 <div class="col-md-6 col-lg-5">
-					@if ($errors->any())
-					<div class="alert alert-danger">
-						<strong>Whoops!</strong>There were some problems with your input. <br><br>
-						<ul>
-							@foreach ($errors->any() as $error)
-							<li>{{$error}}</li>
-							@endforeach
-						</ul>
-					</div>
-						
-					@endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input. <br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    @endif
                     <div class="register-box bg-white box-shadow border-radius-10">
                         <div class="wizard-content">
-                            <form action="{{route('applicants.store')}}" method="POST" class="tab-wizard2 wizard-circle wizard">
-								@csrf
+                            <form action="{{ route('applicants.store') }}" method="POST"
+                                class="tab-wizard2 wizard-circle wizard">
+                                @csrf
                                 <h5>Basic Account Credentials</h5>
                                 <section>
                                     <div class="form-wrap max-width-600 mx-auto">
@@ -126,10 +128,10 @@
                                                 <input name="first_name" type="text" class="form-control">
                                             </div>
                                         </div>
-										<div class="form-group row">
+                                        <div class="form-group row">
                                             <label class="col-sm-4 col-form-label">Last Name*</label>
                                             <div class="col-sm-8">
-                                                <input name="first_name" type="text" class="form-control">
+                                                <input name="last_name" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-group row align-items-center">
@@ -259,7 +261,7 @@
                                                     <div id="firstNameOverview" class="col-sm-8">john</div>
                                                 </div>
                                             </li>
-											<li>
+                                            <li>
                                                 <div class="row">
                                                     <div class="col-sm-4 weight-600">Last Name</div>
                                                     <div id="lastNameOverview" class="col-sm-8">smith</div>
@@ -279,12 +281,9 @@
                                         </div>
                                     </div>
                                 </section>
-								<script>
-									document.getElementById('passwordOverview').innerHTML = 
-												document.getElementsByName("password").value;
-												// getElementById("user_input").value;
-								</script>
-								<button type="submit" style="display: none" class="btn btn-outline-primary">Submit</button>
+
+                                <button type="submit" style="display: none"
+                                    class="btn btn-outline-primary">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -312,7 +311,16 @@
     </div>
     <!-- success Popup html End --> --}}
     <!-- js -->
-	
+    <script>
+        document.getElementById('firstNameOverview').innerHTML =
+            document.getElementsByName("first_name").value;
+        document.getElementById('lastNameOverview').innerHTML =
+            document.getElementsByName("last_name").value;
+		document.getElementById('emailOverview').innerHTML = 
+                    document.getElementsByName("email").value;
+					document.getElementById('passwordOverview').innerHTML = 
+                    document.getElementsByName("password").value;
+    </script>
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>

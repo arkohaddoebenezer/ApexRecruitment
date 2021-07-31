@@ -37,11 +37,17 @@ class ApplicantController extends Controller
     {
         //Validate the inputs
         $request->validate([
-            
+            'first_name' => 'required',
+            'last_name' =>  'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
-        //Create a new applicant
+        //Add a new applicant to database
+        Applicant::create($request->all());
+
 
         //Redirect a user and send a friendly message
+        return redirect()->route('applicants.dashboard')->with('succes', 'Registration Sucessful');
     }
 
     /**
