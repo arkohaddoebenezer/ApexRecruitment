@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/apply', function () {
     return view('applicants.login');
 });
-Route::get('/applicant.dashboard', function () {
+
+Route::get('/applicants.dashboard', function () {
     return view('applicants.dashboard');
-});
+})->name('applicants.dashboard');
+
 Route::get('admin.dashboard', function () {
     return view('admin.dashboard.index');
 });

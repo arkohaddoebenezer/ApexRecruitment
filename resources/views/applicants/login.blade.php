@@ -134,16 +134,22 @@
                                                 <input name="last_name" type="text" class="form-control">
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-4 col-form-label">Phone*</label>
+                                            <div class="col-sm-8">
+                                                <input name="phone" type="text" class="form-control">
+                                            </div>
+                                        </div>
                                         <div class="form-group row align-items-center">
                                             <label class="col-sm-4 col-form-label">Gender*</label>
                                             <div class="col-sm-8">
                                                 <div class="custom-control custom-radio custom-control-inline pb-0">
-                                                    <input type="radio" id="male" name="gender"
+                                                    <input value="Male" type="radio" id="male" name="gender"
                                                         class="custom-control-input">
                                                     <label class="custom-control-label" for="male">Male</label>
                                                 </div>
                                                 <div class="custom-control custom-radio custom-control-inline pb-0">
-                                                    <input type="radio" id="female" name="gender"
+                                                    <input value="Female" type="radio" id="female" name="gender"
                                                         class="custom-control-input">
                                                     <label class="custom-control-label" for="female">Female</label>
                                                 </div>
