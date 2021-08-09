@@ -18,12 +18,16 @@ Route::get('/apply', function () {
     return view('applicants.login');
 });
 
+Route::get('/show', function () {
+    return view('admin.applicants.show');
+})->name('applicantsShow');
+
 Route::get('/applicants.dashboard', function () {
     return view('applicants.dashboard');
-})->name('applicants.dashboard');
+})->name('applicantsDashboard');
 
 Route::get('admin.dashboard', function () {
-    return view('admin.dashboard.index');
+    return view('admin.dashboard');
 });
 Route::get('admin.applicants', function () {
     return view('admin.applicants.index');

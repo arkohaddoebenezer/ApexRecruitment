@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Applicant;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class ApplicantController extends Controller
 {
@@ -14,7 +15,9 @@ class ApplicantController extends Controller
      */
     public function index()
     {
-        //
+        $applicants = Applicant::latest()->paginate(10);
+
+        return view('admin.applicants.index',compact('applicants'))->with(request()->input('page'));
     }
 
     /**
@@ -39,15 +42,16 @@ class ApplicantController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' =>  'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email|unique:applicants',
+            'password' => 'required',
+            'phone'=>'required|unique:applicants'
         ]);
         //Add a new applicant to database
         Applicant::create($request->all());
 
 
         //Redirect a user and send a friendly message
-        return redirect()->route('applicants.dashboard')->with('succes', 'Registration Sucessful');
+        return redirect()->route('applicantsDashboard')->with('success', 'Registration Sucessful');
     }
 
     /**
@@ -59,8 +63,9 @@ class ApplicantController extends Controller
     public function show(Applicant $applicant)
     {
         //
+        // return  view("admin.applicants.show",compact('applicant'));
+        return redirect()->route("applicantsShow");
     }
-
     /**
      * Show the form for editing the specified resource.
      *
